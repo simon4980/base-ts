@@ -1,6 +1,5 @@
 var gulp = require('gulp');
 var browserify = require('browserify');
-// var watchify = require("watchify");
 var source = require('vinyl-source-stream');
 var tsify = require('tsify');
 var uglify = require('gulp-uglify');
@@ -20,15 +19,7 @@ var imagemin = require('gulp-imagemin');
 var scsslocation = 'src/scss/*.scss';
 var imglocation = 'src/img/**/*';
 
-var watchedBrowserify = watchify(browserify({
-    basedir: '.',
-    debug: true,
-    entries: ['src/typescript/app.ts'],
-    cache: {},
-    packageCache: {}
-}).plugin(tsify));
-
-
+// Bundle TS files
 function bundle() {
     return watchedBrowserify
         .bundle()
@@ -41,6 +32,7 @@ function bundle() {
         .pipe(connect.reload())
         .pipe(notify({ message: 'Typescript task complete' }));
 }
+
 // Live server reload
 gulp.task('connect', function() {
     connect.server({
@@ -49,7 +41,7 @@ gulp.task('connect', function() {
     })
 });
 
-gulp.task('test', function(){
+gulp.task('typescript', function(){
     return browserify({
         basedir: '.',
         debug: true,
@@ -98,9 +90,9 @@ gulp.task('watch', function() {
     gulp.watch(scsslocation, ['styles']);
     // Watch image files
     gulp.watch(imglocation, ['images']);
-
-    gulp.watch('src/typescript/**/*.ts', ['test']);
+    // Watch typescript files
+    gulp.watch('src/typescript/**/*.ts', ['typescript']);
 
 });
 
-gulp.task("default", ['styles', 'connect', 'images', 'test', 'watch']);
+gulp.task("default", ['styles', 'connect', 'images', 'typescript', 'watch']);
