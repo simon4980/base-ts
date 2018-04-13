@@ -65,7 +65,7 @@ gulp.task('typescript', function(){
 gulp.task('styles', function() {
     return sass(scsslocation, { style: 'expanded' })
     .pipe(autoprefixer('last 2 version'))
-    .pipe(concat('main.css'))
+    .pipe(concat('app.css'))
     .pipe(gulp.dest('dist/css'))
     .pipe(rename({ suffix: '.min' }))
     .pipe(cssnano())
