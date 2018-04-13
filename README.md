@@ -2,7 +2,7 @@ Base project for website using typescript. All typescript files need to being im
 
 ## Only make changes in the src directory.  All files will be generated and moved to the dist directory.  
 
-Inline feature will only inline files if the inline flag is added to each css and js link in the html document. For example:     <link rel="stylesheet" type="text/css" href="css/app.css" inline >
+Inline feature will only inline files if the inline flag is added to each css and js link in the html document. For example:     `<link rel="stylesheet" type="text/css" href="css/app.css" inline >`
 
 
 ## Steps
