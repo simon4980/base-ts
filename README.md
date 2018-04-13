@@ -2,6 +2,8 @@ Base project for website using typescript. All typescript files need to being im
 
 ## Steps
 * Run `npm install` from the root directory of the project.
+* Run `mkdir dist/img` in project root.
+* Run `mkdir src/img` in project root.
 * Run `gulp` to start task runner which will also start up a local server. 
 
 ## Project structure
